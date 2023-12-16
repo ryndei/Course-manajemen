@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('Hari');
             $table->time('Jam');
             $table->string('harga');
+            $table->string('jumlah_pertemuan');
+            $table->string('deskripsi');
             $table->timestamps();
         });
     }

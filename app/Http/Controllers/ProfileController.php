@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -56,5 +57,27 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function show(User $user)
+    {
+        $users = User::all();
+        return view('user.profile', compact('user'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function ubah(User $user)
+    {
+        return view('user.ProfileEdit', compact('user'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function perbarui(User $user)
+    {
+        //
     }
 }

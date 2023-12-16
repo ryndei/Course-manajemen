@@ -63,6 +63,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ url('/admin/manajemen_course.listDaftar') }}"
+                            class="nav-link {{ request()->is('admin/manajemen_course.listDaftar') ? 'active' : '' }}">
+                            <i class="justify-center nav icon fa-solid fa-book-open-reader"></i>
+                            <p>
+                                Manajemen Siswa
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('logout') }}" class="nav-link"
                             onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">

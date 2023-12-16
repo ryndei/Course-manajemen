@@ -40,7 +40,7 @@ class UserController extends Controller
         ]);
         return redirect('admin/manajemen_user.index')->with('success', 'Data berhasil diubah!');
     }
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $user = User::find($id);
         $user->delete();
@@ -66,6 +66,9 @@ class UserController extends Controller
             'id' => $request->id,
             'name' => $request->name,
             'email' => $request->email,
+            'alamat' => $request->alamat,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'no_telepon' => $request->no_telepon,
             'password' => $request->password,
             'role' => $request->role,
         ]);

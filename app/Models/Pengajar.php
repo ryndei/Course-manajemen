@@ -7,5 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class pengajar extends Model
 {
-    use HasFactory;
+    protected $table = "pengajars";
+    protected $primarykey = "id";
+    protected $fillable = ['id', 'nama'];
+
+    public function course()
+    {
+        return $this->hasMany(Course::class);
+    }
+
+    public function alldata()
+    {
+    }
+
+    public function DetailData($id)
+    {
+    }
 }

@@ -12,17 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('siswas', function (Blueprint $table) {
-            $table->id();           
+            $table->id();
             $table->string('nama');
             $table->string('alamat');
             $table->string('jenis_kelamin');
             $table->string('email');
             $table->string('no_telepon');
+            $table->BLOB('bukti_pembayaran');
+            $table->string('kelas');
             $table->timestamps();
-    
         });
     }
-    
+
     /**
      * Reverse the migrations.
      */

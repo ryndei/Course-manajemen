@@ -7,7 +7,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Home</a>
+                <a href="{{ url('user.userhome') }}" class="nav-link">Home</a>
             </li>
         </ul>
     </nav>
@@ -29,15 +29,13 @@
                 <div class="user-panel  mt-3 pb-1 pl-4 mb-2 d-flex ">
                     <i class="fas fa-user text-white mr-2"></i>
                     <div class="info mb-2 pb-2">
-                        <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+                        <a href="{{ url('user.profile') }}" class="d-block">{{ auth()->user()->name }}</a>
                     </div>
                 </div>
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-   with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="{{ 'user.userhome' }}"
+                        <a href="{{ url('user.userhome') }}"
                             class="nav-link {{ request()->is('user.userhome') ? 'active' : '' }}">
                             <i class="fa-solid fa-house"></i>
                             <p>
@@ -46,7 +44,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ '/user.course' }}"
+                        <a href="{{ url('/user.course') }}"
                             class="nav-link {{ request()->is('user.course') ? 'active' : '' }}">
                             <i class="fa-solid fa-list"></i>
                             <p>

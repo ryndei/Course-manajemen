@@ -2,6 +2,7 @@
 <html lang="en">
 @include('layouts.head')
 
+
 <body class="hold-transition sidebar-mini layout-navbar-fixed">
     <!-- Sidebar -->
     @include('layouts.sidebar')
@@ -21,11 +22,9 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="box-body">
-                                        <button data-toggle="modal" data-target="#myModal"
-                                            class="btn btn-info mb-2"><span
-                                                class="glyphicon glyphicon-plus"></span>Tambah
-                                            kelas</button>
-                                        @include('layouts.modal')
+                                        <a href="{{ 'manajemen_course.create' }}" class="btn btn-info my-2">Tambah
+                                            Kelas</a>
+
                                     </div>
                                 </div>
                             </div>
@@ -43,6 +42,7 @@
                                             <th>Jam</th>
                                             <th>Harga</th>
                                             <th>Jumlah Pertemuan</th>
+
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -58,6 +58,7 @@
                                                 <td>{{ $course->jam }}</td>
                                                 <td>{{ $course->harga }}</td>
                                                 <td>{{ $course->jumlah_pertemuan }}</td>
+
                                                 <td>
                                                     <div class="flex mx-1">
                                                         <a href="/admin/manajemen_course/{{ $course->id }}/edit"
@@ -72,6 +73,25 @@
                                                     </form>
                                                 </td>
                                             </tr>
+                                            <style>
+                                                #desc-{{ $course->id }} {
+                                                    max-height: 50px;
+                                                    overflow: hidden;
+                                                }
+
+                                                #desc-{{ $course->id }}.expanded {
+                                                    max-height: none;
+
+                                                    .desc {
+                                                        max-height: 50px;
+                                                        overflow: hidden;
+                                                    }
+
+                                                    .desc.expanded {
+                                                        max-height: none;
+                                                    }
+                                                }
+                                            </style>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -86,7 +106,20 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+    <script>
+        function toggleDesc() {
+            var target = this.dataset.target;
+            var desc = document.querySelector(target);
 
+            desc.classList.toggle('expanded');
+            var buttons = document.querySelectorAll('.toggle-btn');
+
+            buttons.forEach(button => {
+                button.onclick = toggleDesc;
+            });
+
+        }
+    </script>
     @include('layouts.footer')
 
     <!-- Control Sidebar -->

@@ -15,10 +15,10 @@ class CourseController extends Controller
 
     public function create()
     {
-        return view('courses.create');
+        return view('/admin/manajemen_course.create');
     }
 
-    public function simpanData(Request $request)
+    public function store(Request $request)
     {
         $data = new \App\Models\Course;
         $data->nama_kelas = $request->input('nama_kelas');
@@ -28,11 +28,11 @@ class CourseController extends Controller
         $data->jam = $request->input('jam');
         $data->harga = $request->input('harga');
         $data->jumlah_pertemuan = $request->input('jumlah_pertemuan');
+        $data->deskripsi = $request->input('deskripsi');
         $data->save();
 
-        return redirect('admin/manajemen_course.index')->with('success', 'Data berhasil disimpan!');
+        return redirect('admin/manajemen_course.index')->with('success', 'Data berhasil ditambah!');
     }
-
 
     public function edit($id)
     {
@@ -71,5 +71,17 @@ class CourseController extends Controller
         $course = Course::find($id);
         $course->delete();
         return redirect('admin/manajemen_course.index')->with('success', 'Data berhasil dihapus!');
+    }
+
+    public function daftarKelas()
+    {
+        $courses = Course::with('edulevel')->paginate(5);
+        return view('user/course', compact('courses'));
+    }
+
+    public function detail($id)
+    {
+        $course = Course::find($id);
+        return view('user/detail', compact(['course']));
     }
 }

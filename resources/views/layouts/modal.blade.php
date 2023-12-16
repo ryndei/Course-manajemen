@@ -53,6 +53,11 @@
                         <input name="jumlah_pertemuan" type="text" autocomplete="off" class="form-control"
                             placeholder="Jumlah pertemuan" required>
                     </div>
+                    <div class="form-group">
+                        <label style="font-size: 18px; color: #000000; font-weight: bold;">Deskripsi</label>
+                        <input name="deskripsi" type="longtext" autocomplete="off" class="form-control"
+                            placeholder="Deskripsi" required>
+                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>

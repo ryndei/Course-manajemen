@@ -25,10 +25,12 @@
         var jam = document.querySelector('input[name="jam"]').value.trim();
         var harga = document.querySelector('input[name="harga"]').value.trim();
         var jumlah_pertemuan = document.querySelector('input[name="jumlah_pertemuan"]').value.trim();
+        var deskripsi = document.querySelector('input[name="deskripsi"]').value.trim();
 
         if (id === '' || nama_kelas === '' || pengajar === '' || ruang === '' || hari === '' || jam ===
             '' || harga ===
             '' || jumlah_pertemuan ===
+            '' || des ===
             '') {
 
             Swal.fire({
@@ -63,5 +65,25 @@
             // Invalid email format
             emailError.textContent = 'Format email tidak valid. Silakan cek kembali.';
         }
-    }
+
+        function openModal(itemId) {
+            var modal = document.getElementById('myModal');
+            var modalContent = document.getElementById('modalContent');
+
+            // Menggunakan Axios untuk melakukan request ke endpoint backend (disesuaikan dengan kebutuhan proyek Anda)
+            axios.get(`/items/${itemId}/details`)
+                .then(response => {
+                    modalContent.innerHTML = response.data;
+                    modal.style.display = 'flex';
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
+        // Fungsi untuk menutup modal
+        function closeModal() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        }
 </script>
